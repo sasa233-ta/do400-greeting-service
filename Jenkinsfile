@@ -22,5 +22,20 @@ pipeline{
         }
 
         // Add the "Deploy" stage here
+        stage('Deploy') {
+
+            steps {
+
+                sh '''
+
+                    oc project gppkup-greetings
+
+                    oc start-build greeting-service --follow --wait
+
+                '''
+
+            }
+
+        }
     }
 }
